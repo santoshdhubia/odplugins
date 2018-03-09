@@ -12,6 +12,9 @@
 
 class uiListBox;
 class uiIOObjSel;
+class uiSeisSel;
+namespace Well { class Data; }
+class uiFunctionDisplay;
 
 
 mExpClass(uiTraining) uiTrainingWell : public uiDialog
@@ -24,9 +27,17 @@ public:
 protected:
 
     uiIOObjSel*		wellselfld_;
+    uiSeisSel*		seisselfld_;
     uiListBox*		logfld_;
+    uiFunctionDisplay*	trcdisp_;
+    uiFunctionDisplay*	logdisp_;
 
-    void		inpChg(CallBacker*);
+    RefMan<Well::Data>	wd_;
+
+    void		wellChg(CallBacker*);
+    void		logChg(CallBacker*);
+    void		seisChg(CallBacker*);
+    void		postFinaliseCB(CallBacker*);
     bool		acceptOK(CallBacker*);
 
 };
